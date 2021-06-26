@@ -1,0 +1,16 @@
+{
+    "categorias":[
+        { "id": 1, "title": "Internet"},
+        { "id": 2, "title": "TV"},
+        { "id": 3, "title": "Telefone Fixo"}
+    ],
+    "produtos":[
+        { "id": 1, "id_categoria": 1, "title": "100MB", "descricao": "100MB de velocidade", "preco": "79.99"},
+        { "id": 2, "id_categoria": 1, "title": "200MB", "descricao": "200MB de velocidade", "preco": "99.99"},
+        { "id": 3, "id_categoria": 1, "title": "300MB", "descricao": "300MB de velocidade", "preco": "129.99"},
+        { "id": 4, "id_categoria": 2, "title": "Full HD", "descricao": "Muitos canais em HD", "preco": "149.99"},
+        { "id": 5, "id_categoria": 2, "title": "Ultimate HD", "descricao": "Canais em HD + Tele Cine", "preco": "199.99"},
+        { "id": 6, "id_categoria": 3, "title": "Ilimitado Fixo Brasil", "descricao": "Fale com qualquer cidade", "preco": "19.99"}
+    ]
+}
+
