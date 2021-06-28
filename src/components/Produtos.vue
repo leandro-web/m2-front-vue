@@ -6,11 +6,11 @@
                     <div class="p-2 box-produto">
                         <input 
                             type="radio" 
-                            :disabled="grupos.length === 0" 
+                            :disabled="categoria !== 1 && !internetSelecionada"
                             :id="prod.id" 
                             :name="categoria" 
                             :value="prod.id"
-                            @click="habilita(categoria)"
+                            @click="selecionaCategoria(prod)"
                         ><br />
                         <label :for="prod.id" class="prod-txt-title">{{prod.title}}</label>
                         <p class="prod-txt-preco">R$ {{prod.preco}}</p>
@@ -28,12 +28,12 @@
     export default {
     name: 'Produtos',
     props: {
-        categoria: Number
+        categoria: Number,
+        internetSelecionada: Boolean
     },
     data(){
         return {
             getProd: [],
-            grupos: []
         }
     },
     mounted(){   
@@ -42,9 +42,10 @@
         })
     },
     methods:{
-        habilita(event) {
-            this.grupos.push(event);
-            console.log(this.grupos);
+        selecionaCategoria(produto) {
+            this.$emit("categoriaSelecionada");
+
+            this.$store.commit('setProduto', produto)
         }
     }
 }

@@ -6,7 +6,11 @@
             <p v-if="cat.id === 1">{{sub1}}</p>
             <p v-if="cat.id === 2">{{sub2}}</p>
             <p v-if="cat.id === 3">{{sub3}}</p>            
-            <Produtos :categoria="cat.id" />
+            <Produtos
+                :categoria="cat.id"
+                :internetSelecionada="internetSelecionada"
+                @categoriaSelecionada="categoriaSelecionada"
+            />
         </div>
     </div>
 </template>
@@ -29,13 +33,19 @@ export default {
     },
     data(){
         return {
-            getCat: []
+            getCat: [],
+            internetSelecionada: false
         }
     },
     mounted(){        
         GetCategorias.listar().then(resposta => {
             this.getCat = resposta.data;
         })
+    },
+    methods: {
+        categoriaSelecionada() {
+            this.internetSelecionada = true;
+        }
     }
 }
 </script>

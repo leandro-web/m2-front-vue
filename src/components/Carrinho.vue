@@ -7,21 +7,16 @@
                     <td>Taxa de instalação</td>
                     <td class="text-right">Grátis</td>
                 </tr>
-                <tr class="cinza">
-                    <td>200MB</td>
-                    <td class="text-right">R$99,99</td>
+
+                <tr class="cinza" v-for="item in this.$store.state.produtos" :key="item.id">
+                    <td>{{item.title}}</td>
+                    <td class="text-right">R${{item.preco}}</td>
                 </tr>
-                <tr class="cinza">
-                    <td>Full HD</td>
-                    <td class="text-right">R$149,99</td>
-                </tr>
-                <tr class="cinza">
-                    <td>Ilimitado Fixo Brasil</td>
-                    <td class="text-right">R$19,99</td>
-                </tr>
+               
+
                 <tr class="txt-roxo txt-total">
                     <td>Total</td>
-                    <td class="text-right">R$269,97/mês</td>
+                    <td class="text-right">R${{somaTotal}}/mês</td>
                 </tr>
                 <tr>
                     <td><button type="button" class="btn btn-primary">Continuar</button></td>
@@ -29,6 +24,7 @@
                 </tr>
             </table>
         </div>
+
         
     </div>
 </template>
@@ -36,9 +32,15 @@
 <script>
 export default {
   name: 'Carrinho',
-  props: {
-    msg: String
+  computed:{
+      somaTotal(){
+        return this.$store.state.produtos
+                .map(produto => Number(produto.preco))
+                .reduce((acc, curr) => acc + curr, 0)
+        
+      }
   }
+
 }
 </script>
 
